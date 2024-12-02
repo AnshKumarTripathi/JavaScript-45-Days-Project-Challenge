@@ -1,5 +1,5 @@
-Day 2: Basic Calculator
-JavaScript
+#Day 2: Basic Calculator
+
 Overview
 On Day 2, we'll create a simple calculator using JavaScript. This calculator will handle basic arithmetic operations such as addition, subtraction, multiplication, and division.
 
