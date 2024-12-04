@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2 class="title"> <span>D</span><span>a</span><span>y</span> <span>4</span> <span>o</span><span>f</span>
+    <span>4</span><span>5</span> <span>d</span><span>a</span><span>y</span><span>s</span>
+    <span>C</span><span>h</span><span>a</span><span>l</span><span>l</span><span>e</span><span>n</span><span>g</span><span>e</span>
+
+    <br>
+    <span>(</span><span>J</span><span>S</span>
+    <span>E</span><span>d</span><span>i</span><span>t</span><span>i</span><span>o</span><span>n</span><span>)</span>
+  </h2>
+
+  <div class="container">
+    <h2>Temperature converter</h2>
+
+    <div class="dropdown-container">
+      <div class="dropdown-mini-container">
+        <label for="unit-temp">Choose the unit of current Temperature: </label>
+
+        <select name="unit-temp" id="unit-temp">
+          <option value="celsius">Celsius</option>
+          <option value="fahrenheit">Fahrenheit</option>
+          <option value="kelvin">Kelvin</option>
+        </select>
+      </div>
+
+      <div class="dropdown-mini-container">
+        <label for="converted-temp">Choose the unit of converted Temperature: </label>
+
+        <select name="converted-temp" id="converted-temp">
+          <option value="celsius">Celsius</option>
+          <option value="fahrenheit">Fahrenheit</option>
+          <option value="kelvin">Kelvin</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="output-container">
+      <label for="temp-input">Temperature</label>
+      <input type="number" id="temp-input" name="temp-input">
+
+      <label for="temp-Converted">Converted Temperature</label>
+      <input type="number" id="temp-Converted" name="temp-Converted">
+    </div>
+
+
+  </div>
+
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
