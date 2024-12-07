@@ -9,14 +9,31 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: floralwhite;
+}
+.title-header {
+  padding: 20px;
+  padding-bottom: 40px;
+  font-size: 2rem;
+  font-family: "Courier New", Courier, monospace;
+  animation-name: colorChange;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 }
 
 .stopwatch-container {
-  min-height: 500px;
+  margin-top: 5rem;
+  min-height: 300px;
   min-width: 500px;
   padding: 20px;
-  background-color: brown;
+  background-color: cadetblue;
   border-radius: 15px;
+  box-shadow: 0 5px 20px black;
+  transition: all 0.5s ease-in-out;
+}
+
+.stopwatch-container:hover {
+  box-shadow: 0 0 0 black;
 }
 
 /* .timer {
@@ -36,6 +53,11 @@ body {
   min-width: 300px;
   min-height: 200px;
   border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.time-view-menu:hover {
+  box-shadow: 0 5px 20px black;
 }
 
 .button-container {
@@ -45,8 +67,13 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 20px;
-  background-color: burlywood;
+  background-color: thistle;
   border-radius: 10px;
+  transition: all 2s ease-in-out;
+}
+
+.button-container:hover {
+  background-color: rgba(216, 191, 216, 0.411);
 }
 
 .btn-container {
@@ -58,15 +85,54 @@ body {
 }
 
 .start-btn {
+  background-color: darkgreen;
+  color: greenyellow;
+  transition: all 0.5s ease-in-out;
+}
+
+.start-btn:hover {
   background-color: greenyellow;
   color: darkgreen;
+  box-shadow: 0 5px 20px black;
 }
 
 .stop-btn {
+  background-color: maroon;
+  color: red;
+  transition: all 0.5s ease-in-out;
+}
+
+.stop-btn:hover {
   background-color: red;
   color: maroon;
+  box-shadow: 0 5px 20px black;
 }
 
 .end-btn {
   background-color: blueviolet;
+  transition: all 0.5s ease-in-out;
+}
+
+.end-btn:hover {
+  background-color: violet;
+  color: blueviolet;
+  box-shadow: 0 5px 20px black;
+}
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  25% {
+    color: rgb(255, 115, 0);
+  }
+  50% {
+    color: rgb(255, 187, 0);
+  }
+  75% {
+    color: rgb(255, 115, 0);
+  }
+  100% {
+    color: red;
+  }
 }
