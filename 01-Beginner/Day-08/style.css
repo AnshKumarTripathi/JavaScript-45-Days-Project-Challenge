@@ -1,0 +1,75 @@
+/* Basic styling for the body */
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 10rem;
+}
+
+/* Card styling */
+.card {
+  margin-top: 2rem;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  width: 400px;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+header h1 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="date"] {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #00ccff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #00249b;
+}
+
+#currentAge {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
