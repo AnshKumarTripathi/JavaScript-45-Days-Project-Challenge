@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="stars-container"></div>
+  <h1>Day 11 of Coding Challenge. (JS Edition)</h1>
+  <div class="container">
+    <h2>Word Counter</h2>
+    <textarea id="textInput" placeholder="Enter your text here..." oninput="adjustHeight(this)"></textarea>
+    <button onclick="calculateWordCount()">Count Words</button>
+    <p id="wordCount">Word Count: 0</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
