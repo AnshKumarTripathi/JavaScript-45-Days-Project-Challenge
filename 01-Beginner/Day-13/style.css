@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgb(239, 248, 255);
+}
+
+.title {
+  padding: 40px;
+}
+
+.bmi-container {
+  margin: 5rem;
+  background-color: rgb(255, 241, 241);
+  max-width: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0px 8px 18px black;
+}
+
+.heading {
+  padding: 20px;
+}
+
+.container-text {
+  margin: 5px;
+}
+
+#weight,
+#height {
+  max-width: 75px;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  padding: 2px 1px;
+  outline: none;
+}
+
+button {
+  margin: 1.5rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: rgb(176, 255, 248);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(0, 183, 255);
+  color: white;
+}

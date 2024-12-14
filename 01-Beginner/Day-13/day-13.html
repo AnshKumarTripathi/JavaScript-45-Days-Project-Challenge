@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 class="title">Day 13 of 45 days coding challenge.</h1>
+
+  <div class="bmi-container">
+
+    <h2 class="heading">BMI calculator</h2>
+
+    <div class="container-text">
+      <label for="weight">Enter your Weight</label>
+      <input type="text" id="weight">
+    </div>
+
+    <div class="container-text">
+      <label for="height">Enter your Height</label>
+      <input type="text" id="height">
+    </div>
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div class="bmi-value" id="bmi-value"></div>
+    <div class="remarks" id="remarks"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
