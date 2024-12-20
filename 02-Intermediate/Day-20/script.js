@@ -1,6 +1,6 @@
 async function findRecipes() {
   const ingredientInput = document.getElementById("ingredient").value;
-  const apiKey = "a831ae409c9442e9a651ee5e8e3b548d";
+  const apiKey = "api";
   const apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientInput}&number=10&apiKey=${apiKey}`;
 
   try {
