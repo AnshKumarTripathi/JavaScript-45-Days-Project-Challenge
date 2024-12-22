@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  background-color: #333;
+}
+
+/* Main Heading Styling */
+.title {
+  margin: 2rem;
+  color: whitesmoke;
+}
+
+.quiz-container {
+  max-width: 1000px;
+  min-width: 600px;
+  margin-top: 2rem;
+  background-color: #222;
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px #555;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+.quiz-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-bottom: 1px solid #555;
+  width: 100%;
+}
+
+.quiz-question-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+}
+
+/* .first-cont {
+  background-color: #333;
+} */
+
+.question {
+  margin-bottom: 10px;
+}
+
+.btn-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+button {
+  max-width: 200px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: transparent;
+  color: whitesmoke;
+  transition: all 0.4s ease-in-out;
+}
+
+button:hover {
+  background-color: #888;
+}
+
+button.correct {
+  background-color: green;
+}
+
+button.incorrect {
+  background-color: red;
+}
+
+#congratulations {
+  display: none;
+  color: white;
+  background-color: #4caf50;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
