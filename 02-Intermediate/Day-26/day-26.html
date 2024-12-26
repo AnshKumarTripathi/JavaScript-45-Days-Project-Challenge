@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Markdown Converter</h1>
+  </header>
+
+  <div class="container">
+    <div class="input-markdown-container">
+      <h2>Enter</h2>
+      <textarea name="markdown-prev" id="markdown-prev" rows="5" cols="50"
+        placeholder="Enter your markdown value"></textarea>
+    </div>
+    <button class="btn" id="convert">Convert</button>
+    <div id="preview"></div>
+  </div>
+
+
+
+  <!-- Ensure marked.js is loaded first -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="script.js">  </script>
+</body>
+
+</html>
