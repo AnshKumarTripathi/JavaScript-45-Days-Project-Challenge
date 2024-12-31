@@ -2,6 +2,14 @@
 
 # White Web Forum Project
 
+### Introduction to White Web Forum
+
+The White Web Forum is inspired by the concept of dark web forums, where users can remain anonymous and engage in open, unrestricted conversations. This platform allows people from all over the world to discuss various topics in public chatrooms, fostering a sense of community and free expression.
+
+One of the key features of the White Web Forum is its user-friendly interface, making it easy for anyone to join and participate in discussions. The platform prioritizes user privacy by ensuring that messages are automatically deleted after every 200th message, providing a secure environment for sharing thoughts and ideas without the fear of long-term data retention.
+
+Whether you're looking to learn, share knowledge, or simply connect with others, the White Web Forum offers a space where you can communicate freely and privately.
+
 ## Project Overview
 
 The White Web Forum is a simple yet modern web-based chat application. It allows users to sign up, log in, create chatrooms, and participate in real-time messaging with other users. The project leverages web technologies such as HTML, CSS, JavaScript, WebSocket, and MongoDB for database management.
