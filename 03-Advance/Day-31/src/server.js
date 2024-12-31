@@ -4,15 +4,18 @@ const http = require("http");
 const WebSocket = require("ws");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
+const path = require("path");
 const User = require("./models/User");
-const Message = require("./models/Messages");
-const Chatroom = require("./models/Chatrooms");
+const Message = require("./models/Message");
+const Chatroom = require("./models/Chatroom");
+
+// const upload = multer({ dest: 'public/avatars/' });
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI);
 
 const db = mongoose.connection;
@@ -23,20 +26,30 @@ db.once("open", function () {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // Signup Route
-app.post("/signup", async (req, res) => {
-  const { username, password, email } = req.body;
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, password: hashedPassword, email });
-    await user.save();
-    res.status(201).json({ message: "User registered successfully" });
-  } catch (error) {
-    res.status(400).json({ error: "Error registering user: " + error.message });
+app.post(
+  "/signup",
+  /* upload.single('avatar'), */ async (req, res) => {
+    const { username, password, email } = req.body;
+    // const avatar = req.file ? req.file.filename : 'default.png';
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = new User({
+        username,
+        password: hashedPassword,
+        email /*, avatar */,
+      });
+      await user.save();
+      res.status(201).json({ message: "User registered successfully" });
+    } catch (error) {
+      res
+        .status(400)
+        .json({ error: "Error registering user: " + error.message });
+    }
   }
-});
+);
 
 // Login Route
 app.post("/login", async (req, res) => {
@@ -44,7 +57,11 @@ app.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username });
     if (user && (await bcrypt.compare(password, user.password))) {
-      res.status(200).json({ message: "User logged in successfully" });
+      res
+        .status(200)
+        .json({
+          message: "User logged in successfully" /*, avatar: user.avatar */,
+        });
     } else {
       res.status(400).json({ error: "Invalid credentials" });
     }
@@ -95,8 +112,42 @@ app.get("/chatrooms/:roomName/messages", async (req, res) => {
   }
 });
 
-// Store Messages in a Queue
-const chatroomQueues = {};
+// Profile Route
+app.get("/profile", async (req, res) => {
+  const username = req.query.username; // Assuming you pass the username as a query parameter
+  try {
+    const user = await User.findOne({ username });
+    if (user) {
+      res.status(200).json({
+        /* avatar: user.avatar */
+      });
+    } else {
+      res.status(400).json({ error: "User not found" });
+    }
+  } catch (error) {
+    res
+      .status(400)
+      .json({ error: "Error fetching profile information: " + error.message });
+  }
+});
+
+// Update Avatar Route
+/* app.post("/profile/avatar", upload.single('avatar'), async (req, res) => {
+  const username = req.query.username; // Assuming you pass the username as a query parameter
+  const avatar = req.file ? req.file.filename : 'default.png';
+  try {
+    const user = await User.findOne({ username });
+    if (user) {
+      user.avatar = avatar;
+      await user.save();
+      res.status(200).json({ avatar: user.avatar });
+    } else {
+      res.status(400).json({ error: "User not found" });
+    }
+  } catch (error) {
+    res.status(400).json({ error: "Error updating avatar: " + error.message });
+  }
+}); */
 
 // WebSocket Connections
 wss.on("connection", (ws) => {
@@ -106,22 +157,21 @@ wss.on("connection", (ws) => {
     console.log(`Received: ${message}`);
     try {
       const parsedMessage = JSON.parse(message);
-      const { username, text, chatroom } = parsedMessage;
+      const { username, text, chatroom /*, avatar */ } = parsedMessage;
+
+      // Validate that chatroom is set
+      if (!chatroom) {
+        console.warn("Chatroom is not set in the message.");
+        return;
+      }
 
       // Store message in database
-      const newMessage = new Message({ username, text, chatroom });
+      const newMessage = new Message({
+        username,
+        text,
+        chatroom /*, avatar */,
+      });
       await newMessage.save();
-
-      // Manage messages in queue
-      if (!chatroomQueues[chatroom]) {
-        chatroomQueues[chatroom] = [];
-      }
-      const queue = chatroomQueues[chatroom];
-      queue.push(newMessage);
-      if (queue.length > 200) {
-        const oldestMessage = queue.shift();
-        await Message.deleteOne({ _id: oldestMessage._id });
-      }
 
       // Broadcast message to all clients
       wss.clients.forEach((client) => {
@@ -132,6 +182,7 @@ wss.on("connection", (ws) => {
               text,
               timestamp: newMessage.timestamp,
               chatroom,
+              // avatar
             })
           );
         }
@@ -147,6 +198,7 @@ wss.on("connection", (ws) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
 server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

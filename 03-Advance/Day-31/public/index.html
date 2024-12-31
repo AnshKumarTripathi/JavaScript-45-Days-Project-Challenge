@@ -4,17 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Chat Application</title>
-  <link rel="stylesheet" href="style.css">
+  <title>White Web Forum</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/emoji-mart/css/emoji-mart.css" />
 </head>
 
 <body>
+  <h1 class="title">White Web Forum</h1>
   <div id="auth-container">
     <form id="signup-form">
       <h2>Signup</h2>
       <input type="text" id="signup-username" placeholder="Username" required>
       <input type="password" id="signup-password" placeholder="Password" required>
       <input type="email" id="signup-email" placeholder="Email" required>
+      <!-- Removed avatar upload field -->
       <button type="submit">Signup</button>
     </form>
     <form id="login-form">
@@ -28,7 +31,7 @@
     <input type="hidden" id="username"> <!-- Hidden input to store username -->
     <div id="chatroom-container">
       <h2>Available Chatrooms</h2>
-      <button id="refresh-chatrooms">Refresh Chatrooms</button>
+      <button class="btn" id="refresh-chatrooms">Refresh Chatrooms</button>
       <div id="chatrooms"></div>
       <form id="create-chatroom-form">
         <input type="text" id="new-chatroom-name" placeholder="New Chatroom Name" required>
@@ -37,15 +40,18 @@
       </form>
     </div>
     <div id="chat-window" style="display: none;">
-      <button id="back-to-chatrooms">Back to Chatrooms</button>
-      <button id="refresh-messages">Refresh Messages</button> <!-- Refresh messages button -->
+      <button class="btn-back" id="back-to-chatrooms">Back to Chatrooms</button>
+      <button class="btn" id="refresh-messages">Refresh Messages</button> <!-- Refresh messages button -->
       <div id="output"></div>
       <div id="feedback"></div>
       <input id="message" type="text" placeholder="Enter your message">
       <button id="send">Send</button>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/chat.js"></script>
+  <script src="/scripts/script.js"></script>
 </body>
 
 </html>
